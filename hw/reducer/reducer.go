@@ -20,7 +20,6 @@ var max = 0.0
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	count := 0
 
 	for scanner.Scan() {
 		row := scanner.Text()
@@ -32,12 +31,8 @@ func main() {
 				continue
 			}
 
-			ram[fields[1]] = stdin_speed
+			ram[fields[1]] = ram[fields[1]] +  stdin_speed
 			ram_count[fields[1]] = ram_count[fields[1]] + 1
-
-			if count == 500 {
-				break
-			}
 		} else {
 			continue
 		}
@@ -51,7 +46,8 @@ func main() {
 		}
 	}
 
-	fmt.Printf("Max average speed - %f\n", max)
+	fmt.Printf("Max avg speed  - %f\n", max)
+
 
 	if err := scanner.Err(); err != nil {
 		panic(err)
